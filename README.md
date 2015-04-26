@@ -1,5 +1,9 @@
 # TweetMachine
 
+Read [this post](https://blog.chiodini.org/2015/04/26/tweetmachine.html) to understand what Tweetmachine is.
+
+The following paragraph describes software setup.
+
 ### Step by step guide
 This guide assumes you're using a Debian-like distribution (e.g., Raspbian). However, it should be easily adaptable for other Linux distributions.
 - Install git
