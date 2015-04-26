@@ -59,7 +59,7 @@ This guide assumes you're using a Debian-like distribution (e.g., Raspbian). How
         cd tweetmachine
         ./build
 
-- Inside `download.py` change these values with your [https://dev.twitter.com/](Twitter Developers) app keys:
+- Inside `download.py` change these values with your [Twitter Developers](https://dev.twitter.com) app keys:
   - CONSUMER_KEY
   - CONSUMER_SECRET
   - ACCESS_TOKEN
@@ -67,8 +67,7 @@ This guide assumes you're using a Debian-like distribution (e.g., Raspbian). How
 
 - Inside `download.py` change the `HASHTAG` you want to follow. Here you can customize other parameters (such as the number of tweets retrieved each time and the name of the output file).
 
-- Start `download.py` in background
-  The easiest (but not very flexible) way:
+- Start `download.py` in background. The easiest (but not very flexible) way:
 
         ./download.py &
 
