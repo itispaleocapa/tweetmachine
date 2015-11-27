@@ -13,6 +13,37 @@ This guide assumes you're using a Debian-like distribution (e.g., Raspbian). How
 - Install i2c-tools (useful, for instance, to run ```i2cdetect```)
 
         sudo apt-get install i2c-tools
+        
+- Edit the kernel modules
+
+        sudo nano /etc/modules
+        
+  Paste these lines at the end of the file
+  
+        i2c-bcm2708 
+        i2c-dev
+
+- Edit ```/etc/modprobe.d/raspi-blacklist.conf```
+
+        sudo nano /etc/modprobe.d/raspi-blacklist.conf
+        
+  and comment the two following lines:
+  
+        # blacklist spi-bcm2708
+        # blacklist i2c-bcm2708
+
+- Edit ```/boot/config.txt```
+
+        sudo nano /boot/config.tx
+        
+  Paste these lines at the end of the file
+
+        dtparam=i2c1=on
+        dtparam=i2c_arm=on
+        
+- Reboot (kernel should now load i2c modules by default at startup)
+
+        sudo reboot
 
 - Download wiringPi
 
