@@ -9,6 +9,10 @@ This guide assumes you're using a Debian-like distribution (e.g., Raspbian). How
 - Install git
 
         sudo apt-get install git 
+        
+- Install i2c-tools (useful, for instance, to run ```i2cdetect```)
+
+        sudo apt-get install i2c-tools
 
 - Download wiringPi
 
