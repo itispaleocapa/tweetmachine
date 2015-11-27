@@ -103,6 +103,8 @@ This guide assumes you're using a Debian-like distribution (e.g., Raspbian). How
   - CONSUMER_SECRET
   - ACCESS_TOKEN
   - ACCESS_TOKEN_SECRET
+  
+  Be careful and *double check* the keys you've inserted. A single wrong character is enough to break the whole application.
 
 - Inside `download.py` change the `HASHTAG` you want to follow. Here you can customize other parameters (such as the number of tweets retrieved each time and the name of the output file).
 
