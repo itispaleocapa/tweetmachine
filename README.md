@@ -6,47 +6,25 @@ The following paragraph describes software setup.
 
 ### Step by step guide
 This guide assumes you're using a Debian-like distribution (e.g., Raspbian). However, it should be easily adaptable for other Linux distributions.
+
+This guide also assumes that the current working directory is your home (`~`). If you're using a different directory, please adapt some of the following commands.
+
 - Install git
 
         sudo apt-get install git 
 
-- Download wiringPi
+- Download wiringPi library and tweetmachine software
 
         git clone git://git.drogon.net/wiringPi
+        git clone git@github.com:lucach/tweetmachine.git
 
-- Edit wiringPiI2C.c
+- Apply a custom patch to wiringPi library
 
-        nano wiringPi/wiringPi/wiringPiI2C.c
-        
-  Paste these lines at the end of the file
-  
-      int wiringPiI2CWriteBlock (int fd, int command, int data[], int n)
-      {
-        int i = 0;
-        size_t quantity = n;
-        union i2c_smbus_data block;
-        // Limit data size.
-        if (I2C_SMBUS_I2C_BLOCK_MAX < quantity)
-          quantity = I2C_SMBUS_I2C_BLOCK_MAX;
-        block.block[0] = quantity;
-        for (; i < quantity; i++)
-          block.block[i+1] = data[i];
-        return i2c_smbus_access (fd, I2C_SMBUS_WRITE, command, I2C_SMBUS_I2C_BLOCK_DATA, &block) ;
-      }
-      
-  and save.
-- Edit wiringPiI2C.h
+        cd ~/wiringPi
+        git apply ~/tweetmachine/0001-Add-wiringPiI2CWriteBlock-function.patch
 
-        nano wiringPi/wiringPi/wiringPiI2C.h
-  
-  Paste this line at the end of the ones beginning with `extern int ...`
-  
-        extern int wiringPiI2CWriteBlock     (int fd, int command, int data[], int n) ;
-        
-  and save.
 - Build wiringPi
 
-        cd wiringPi
         ./build
 
 - Install python2 and tweepy
@@ -54,13 +32,9 @@ This guide assumes you're using a Debian-like distribution (e.g., Raspbian). How
         sudo apt-get install python2.7 python-pip
         sudo pip install tweepy
 
-- Download this repository
+- Build tweetmachine software
 
-        git clone git@github.com:lucach/tweetmachine.git
-
-- Build
-
-        cd tweetmachine
+        cd ~/tweetmachine
         ./build
 
 - Inside `download.py` change these values with your [Twitter Developers](https://dev.twitter.com) app keys:
