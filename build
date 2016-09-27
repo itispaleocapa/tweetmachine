@@ -2,7 +2,7 @@
 
 # TweetMachine project - https://github.com/lucach/tweetmachine
 # Copyright © 2014 Demetrio Carrara <carrarademetrio@gmail.com>
-# Copyright © 2014 Luca Chiodini <luca@chiodini.org>
+# Copyright © 2014-2016 Luca Chiodini <luca@chiodini.org>
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 echo "Compiling..."
 g++ -c main.cpp PiCommander.cpp
 echo "Linking..."
-g++ PiCommander.o main.o -lwiringPi -o program
+g++ PiCommander.o main.o -pthread -lwiringPi -o program
 echo "Cleaning..."
 rm PiCommander.o main.o
 echo "Done."
