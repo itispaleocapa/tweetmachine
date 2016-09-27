@@ -12,6 +12,41 @@ This guide also assumes that the current working directory is your home (`~`). I
 - Install git
 
         sudo apt-get install git 
+        
+- Install i2c-tools (useful, for instance, to run ```i2cdetect```)
+
+        sudo apt-get install i2c-tools
+        
+- Edit the kernel modules
+
+        sudo nano /etc/modules
+        
+  Paste these lines at the end of the file
+  
+        i2c-bcm2708 
+        i2c-dev
+
+- Edit ```/etc/modprobe.d/raspi-blacklist.conf```
+
+        sudo nano /etc/modprobe.d/raspi-blacklist.conf
+        
+  and comment the two following lines:
+  
+        # blacklist spi-bcm2708
+        # blacklist i2c-bcm2708
+
+- Edit ```/boot/config.txt```
+
+        sudo nano /boot/config.tx
+        
+  Paste these lines at the end of the file
+
+        dtparam=i2c1=on
+        dtparam=i2c_arm=on
+        
+- Reboot (kernel should now load i2c modules by default at startup)
+
+        sudo reboot
 
 - Download wiringPi library and tweetmachine software
 
@@ -42,6 +77,8 @@ This guide also assumes that the current working directory is your home (`~`). I
   - CONSUMER_SECRET
   - ACCESS_TOKEN
   - ACCESS_TOKEN_SECRET
+  
+  Be careful and *double check* the keys you've inserted. A single wrong character is enough to break the whole application.
 
 - Inside `download.py` change the `HASHTAG` you want to follow. Here you can customize other parameters (such as the number of tweets retrieved each time and the name of the output file).
 
