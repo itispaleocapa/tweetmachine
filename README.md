@@ -51,7 +51,7 @@ This guide also assumes that the current working directory is your home (`~`). I
 - Download wiringPi library and tweetmachine software
 
         git clone git://git.drogon.net/wiringPi
-        git clone git@github.com:lucach/tweetmachine.git
+        git clone https://github.com/lucach/tweetmachine
 
 - Apply a custom patch to wiringPi library
 
