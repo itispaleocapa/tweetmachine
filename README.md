@@ -13,9 +13,9 @@ This guide also assumes that the current working directory is your home (`~`). I
 
         sudo apt-get install git 
         
-- Install i2c-tools (useful, for instance, to run ```i2cdetect```)
+- Install i2c-tools (useful, for instance, to run ```i2cdetect```) and the I2C development library (needed by wiringPi at build time)
 
-        sudo apt-get install i2c-tools
+        sudo apt-get install i2c-tools libi2c-dev
         
 - Edit the kernel modules
 
